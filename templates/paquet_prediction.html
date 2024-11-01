@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section> 
+
+  <div class="container mt-5">
+   <h5>Résultats de l'analyse</h5>
+   <hr class="divider-w mt-10 mb-20">
+    <div class="row">
+  <!-- Spinner pour Maria -->
+  <div id="spinnerPaquet" class="col-12 text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Chargement...</span>
+    </div>
+    <p class="text-center">Chargement des résultats...</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 text-center" id="resultsPaquet" style="display: none;">
+    {% if result_NoN == 'normal' %}<div class="mt-3">
+      <!--<h5>Résultats de l'analyse</h5>-->
+      <img class=" me-lg-2" src="{{ url_for('static', filename='images/valide.png') }}" alt="" style="width: 50px; height: 50px;">
+      <p class="text-success text-center">Le paquet réseau est {{ result_NoN }}.</p>
+
+    </div>{% else %}<div class="mt-3">
+      <img class=" me-lg-2" src="{{ url_for('static', filename='images/echec.png') }}" alt="" style="width: 50px; height: 50px;">
+       <p class="text-danger text-center">Le paquet réseau est {{ result_NoN }}. Il s'agit d'une attaque de type {{ result_rose }}.</p>
+    </div>{% endif %}
+  </div>
+ </div>   
+
+
+
+  </div>
+</section>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Cacher les résultats et afficher les spinners
+    document.getElementById("resultsPaquet").style.display = "none";
+    document.getElementById("spinnerPaquet").style.display = "block";
+
+    // Après un délai (1 secondes ici), afficher les résultats et cacher les spinners
+    setTimeout(function() {
+      document.getElementById("resultsPaquet").style.display = "block";
+      document.getElementById("spinnerPaquet").style.display = "none";
+    }, 1000);
+  });
+</script>
+{% endblock %}

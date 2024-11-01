@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prédiction de Paquet</title>
+ <!-- Link Bootstrap CSS -->
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  <!--  fichier CSS personnalisé -->
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- En-tête -->
+  {% include 'header.html' %}
+
+  <!-- Contenu de la page -->
+  {% block content %}{% endblock %}
+
+  <!-- Footer -->
+  {% include 'footer.html' %}
+
+  <!-- Link Bootstrap JS -->
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  <!-- jQuery -->
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+ <!-- Link Bootstrap js-->
+ <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<!-- Link Popper js-->
+ <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+<script>
+  $(document).ready(function() {
+    // Masquer le spinner après un délai de 2 secondes (2000 ms)
+    setTimeout(function() {
+      $("#spinner").fadeOut("slow", function() {
+        // Une fois le spinner disparu, il ne réapparaît pas
+        $("#spinner").remove();
+      });
+    }, 1000);
+
+    // Écoutez l'événement de soumission du formulaire
+    $("form").submit(function() {
+      // Cacher le bouton d'envoi et afficher le spinner
+      $(this).find("#submitBtn").prop("disabled", true).html(
+        '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Envoi en cours...'
+      );
+    });
+  });
+</script>
+
+
+
+</body>
+</html>

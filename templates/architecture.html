@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+ <section>
+   <div class="container mt-5">
+    <h3>Architecture</h3>
+     <hr class="divider-w mt-10 mb-20">
+     <div class="row">
+    <div class="col-6">
+    <p>Nous proposons une architecture modulaire de quatre niveaux : le prétraitement des données, Maria, Rose et Sina. Le premier niveau permet d’effectuer les prétraitements sur les données entrées. Les niveaux suivants sont constitués d’un ensemble de modèles dont la corrélation des sorties par les arbitres A et B permet de distinguer les attaques et leur catégorie aux paquets normaux. Chaque modèle est constitué de quatre couches dont une couche d’entrée, deux couches cachées et une couche de sortie. Pour chaque modèle, nous recherchons le nombre de neurones de la couche cachée qui permet d’obtenir le meilleur taux de détection dynamiquement. Maria est un assemblage de quatre modèles : MNoN, MUdp, MTcp, MIcmp. Ce sont des modèles de classification binaire qui détermine le caractère normal ou non des données analysées. MNoN analyse toutes les données sans distinction du type de protocole. La classification par type de protocole se fait par les modèles MUdp, MTcp et MIcmp. Ainsi, MTcp analyse le traffic TCP. Le modèle MUdp gère les paquets UDP et MIcmp, les paquets provenant du traffic ICMP. L’élément A (du niveau Maria) est un arbitre qui décide s’il s’agit d’une attaque ou non. Le mur Rose, est formé d’un unique modèle de classification multi-classes : MRose. Il assure la classification de chaque entrées anormales issues de A suivant trois catégories d’attaque. B, seul élément de Sina, est un arbitre qui fait la synthèse des sorties de Maria et Rose.</p>
+  </div>
+  <div class="col-6">
+    <img src="{{url_for('static',filename='images/architecture.png')}}" style="width: 550px; height: 400px;">
+  </div>
+</div>
+  
+</div>
+</section>
+{% endblock %}

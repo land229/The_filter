@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+<div class="container mt-5">
+<h5>Résultats de l'analyse</h5>
+   <hr class="divider-w mt-10 mb-20">
+ <div class="row">
+  <!-- Spinner pour Maria -->
+  <div id="spinnerMaria" class="col-6">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Chargement...</span>
+    </div>
+    <p>Chargement des résultats du Niveau II...</p>
+  </div>
+
+  <!-- Spinner pour Rose -->
+  <div id="spinnerRose" class="col-6">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Chargement...</span>
+    </div>
+    <p>Chargement des résultats de Rose...</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6" id="resultsMaria" style="display: none;">
+    <div class="card my-3 result-card">
+      <div class="card-body text-center">
+        <h6 class="card-title">Résultat de l'analyse du Niveau II</h6>
+        <pre>{{ maria_classification_report+"\n" }}</pre>
+        <a href="#" id="voirPlusMaria" class="btn btn-primary d-block mx-auto">Voir plus</a>
+      </div>
+      <div id="moreResultsMaria" class="collapse">
+        <div class="text-center">
+        <h7 class="card-title">Résultat de la Prédiction Normal_or_Not</h7>
+        <pre>{{ NoN_classification_report }}</pre>
+      </div>
+      <div class=" text-center">
+        <h7 class="card-title">Résultat de la Prédiction par protocole</h7>
+        <pre>{{ protocole_classification_report }}</pre>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-6" id="resultsRose" style="display: none;">
+    <div class="card  my-3 result-card">
+      <div class="card-body text-center">
+        <h6 class="card-title">Résultat de la Prédiction pour Rose</h6>
+        <pre>{{ rose_classification_report }}</pre>
+        <a href="#" id="voirPlusRose" class="btn btn-primary d-block mx-auto">Voir plus</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+</section>
+<!-- Javascript pour gérer l'affichage -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Cacher les résultats et afficher les spinners
+    document.getElementById("resultsMaria").style.display = "none";
+    document.getElementById("resultsRose").style.display = "none";
+    document.getElementById("spinnerMaria").style.display = "block";
+    document.getElementById("spinnerRose").style.display = "block";
+
+    // Après un délai (2 secondes ici), afficher les résultats et cacher les spinners
+    setTimeout(function() {
+      document.getElementById("resultsMaria").style.display = "block";
+      document.getElementById("resultsRose").style.display = "block";
+      document.getElementById("spinnerMaria").style.display = "none";
+      document.getElementById("spinnerRose").style.display = "none";
+    }, 2000);
+
+    // Gestion de l'événement pour le bouton "Voir plus" de Maria
+    document.getElementById("voirPlusMaria").addEventListener("click", function(event) {
+      event.preventDefault();
+      document.getElementById("moreResultsMaria").classList.toggle("show");
+    });
+
+    // Gestion de l'événement pour le bouton "Voir plus" de Rose
+    document.getElementById("voirPlusRose").addEventListener("click", function(event) {
+      event.preventDefault();
+      document.getElementById("moreResultsRose").classList.toggle("show");
+    });
+  });
+</script>
+
+{% endblock %}

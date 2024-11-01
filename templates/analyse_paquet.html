@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+<div class="container mt-5">
+  <h2>Analyser un Paquet</h2>
+  <hr class="divider-w mt-10 mb-20">
+  <p>Remplissez les caractéristiques du paquet réseau pour obtenir une prédiction: </p>
+
+  <form method="POST" action="{{ url_for('paquet_prediction') }}">
+    {{ form.hidden_tag() }}
+    {# Cette balise hidden_tag est une fonctionnalité de sécurité CSRF. #}
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class=" mb-3 ">
+          
+          {{ form.duration(class="form-control" ,placeholder="duration") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.protocol_type(class="form-control",placeholder="protocol_type") }}
+        </div>
+        <div class="mb-3">
+         
+          {{ form.service(class="form-control",placeholder="service") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.flag(class="form-control",placeholder="flag") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.src_bytes(class="form-control",placeholder="src_bytes") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.dst_bytes(class="form-control",placeholder="dst_bytes") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.land(class="form-control",placeholder="land") }}
+        </div>
+        <div class="mb-3">
+         
+          {{ form.wrong_fragment(class="form-control",placeholder="wrong_fragment") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.urgent(class="form-control",placeholder="urgent") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.hot(class="form-control",placeholder="hot") }}
+        </div>
+
+      </div>
+
+      <div class="col-md-3">
+        
+        
+        
+        <div class="mb-3">
+         
+          {{ form.num_failed_logins(class="form-control",placeholder="num_failed_logins") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.logged_in(class="form-control",placeholder="logged_in") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.num_compromised(class="form-control",placeholder="num_compromised") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.root_shell(class="form-control",placeholder="root_shell") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.su_attempted(class="form-control",placeholder="su_attempted") }}
+        </div>
+        <div class="mb-3">
+          {{ form.num_root(class="form-control",placeholder="num_root")}}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.num_file_creations(class="form-control",placeholder="num_file_creations") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.num_shells(class="form-control",placeholder="num_shells") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.num_access_files(class="form-control",placeholder="num_access_files") }}
+        </div>
+        <div class="mb-3">
+         
+          {{ form.is_host_login(class="form-control",placeholder="is_host_login") }}
+        </div>
+        
+      </div>
+
+      <div class="col-md-3">
+         
+        <div class="mb-3">
+          
+          {{ form.is_guest_login(class="form-control",placeholder="is_guest_login") }}
+        </div>
+         <div class="mb-3">
+          
+          {{ form.count(class="form-control",placeholder="count") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.srv_count(class="form-control",placeholder="srv_count") }}
+        </div>
+        <div class="mb-3">
+          {{ form.serror_rate(class="form-control",placeholder="serror_rate") }}
+
+        </div>
+        <div class="mb-3">
+          {{ form.srv_serror_rate(class="form-control",placeholder="srv_serror_rate") }}
+
+        </div>
+        <div class="mb-3">
+          {{ form.rerror_rate(class="form-control",placeholder="rerror_rate") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.srv_rerror_rate(class="form-control",placeholder="srv_rerror_rate") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.same_srv_rate(class="form-control",placeholder="same_srv_rate") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.diff_srv_rate(class="form-control",placeholder="diff_srv_rate") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.srv_diff_host_rate(class="form-control",placeholder="srv_diff_host_rate") }}
+        </div>
+
+      </div>
+
+      <div class="col-md-3">
+
+        <div class="mb-3">
+          {{ form.dst_host_count(class="form-control",placeholder="dst_host_count") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.dst_host_srv_count(class="form-control",placeholder="dst_host_srv_count") }}
+        </div>
+        <div class="mb-3">
+          {{ form.dst_host_same_srv_rate(class="form-control",placeholder="dst_host_same_srv_rate") }}
+        </div> 
+        <div class="mb-3">
+          
+          {{ form.dst_host_diff_srv_rate(class="form-control",placeholder="dst_host_diff_srv_rate") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.dst_host_same_src_port_rate(class="form-control",placeholder="dst_host_same_src_port_rate") }}
+        </div>
+        <div class="mb-3">
+          
+          {{ form.dst_host_srv_diff_host_rate(class="form-control",placeholder="dst_host_srv_diff_host_rate") }}
+        </div>
+        <div class="mb-3">
+          {{ form.dst_host_serror_rate(class="form-control",placeholder="dst_host_serror_rate") }}
+        </div> 
+        <div class="mb-3">
+    
+          {{ form.dst_host_srv_serror_rate(class="form-control",placeholder="dst_host_srv_serror_rate") }}
+        </div>
+        <div class="mb-3">
+          {{ form.dst_host_rerror_rate(class="form-control",placeholder="dst_host_rerror_rate") }}
+        </div>
+        <div class="mb-3">
+         {{ form.dst_host_srv_rerror_rate(class="form-control",placeholder="dst_host_srv_rerror_rate") }} 
+        </div>
+      </div>
+    </div>
+    <div class="row">
+     <!-- <div class="col-md-12">-->
+        {{ form.submit(class="btn btn-primary d-block mx-auto", id="submitBtn") }}
+      <!--</div>-->
+    </div>
+
+  </form>
+</div>
+</section>
+{% endblock %}

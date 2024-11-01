@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+  <div class="container mt-5">
+    <h2>Analyse d'un Fichier</h2>
+    <hr class="divider-w mt-10 mb-20">
+    <p>Choisissez un fichier pour effectuer les prédictions.</p>
+    
+    <form method="POST" action="{{ url_for('importer_fichier') }}" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      
+      <!-- Champ pour uploader le fichier -->
+      <div class="mb-3">
+        <label for="file" class="form-label">Sélectionnez un fichier :</label>
+        {{ form.file(class="form-control", id="file") }}
+      </div>
+      
+      <!--<button type="submit" class="btn btn-primary" href="{{ url_for('importer_fichier') }}">Analyser le Fichier</button>-->
+      <div class="mb-3">
+  {{ form.submit(class="btn btn-primary d-block mx-auto", id="submitBtn") }}
+  </div>
+    </form>
+  </div>
+  </section>
+{% endblock %}

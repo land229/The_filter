@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section >
+
+<div class="container mt-5"> 
+<h3>Contact</h3>
+ <hr class="divider-w mt-10 mb-20">
+     <form>
+                <div class="row">
+                  <div class="col-6 mb-3">
+                    <div class="form-group">
+                      
+                      <input type="text" class="form-control  " id="fname" placeholder="Prénoms">
+                    </div>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <div class="form-group">
+                      
+                      <input type="text" class="form-control" id="lname" placeholder="Nom" >
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  
+                  <input type="email" class="form-control " id="email" placeholder="Email" >
+                </div>
+
+                <div class="form-group mb-5">
+                  
+                  <textarea name="" class="form-control" id="message" cols="30" rows="5" placeholder="Votre message"></textarea>
+                </div>
+            
+              <div class="text-center"><button type="submit" class="btn btn-primary d-block mx-auto col-12">Envoyer</button></div> 
+               	
+  </form>
+  
+</div>
+
+</section>
+{% endblock %}

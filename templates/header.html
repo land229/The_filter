@@ -1,0 +1,43 @@
+<!-- En-tête -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="{{url_for('home')}}">Mon App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center text-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link {% if active_page=='home'%}active{% endif %}" href="{{url_for('home')}}">ACCUEIL</a>
+        </li>
+        <!--<li class="nav-item">
+          <a class="nav-link {% if active_page=='about'%}active{% endif %}" href="{{url_for('about')}}">À PROPOS</a>
+        </li>-->
+        <!--<li class="nav-item">
+          <a class="nav-link {% if active_page=='architecture'%}active{% endif %}" href="{{url_for('architecture')}}">ARCHITECTURE</a>
+        </li>-->
+        <li class="nav-item">
+          <a class="nav-link {% if active_page=='contact'%}active{% endif %}" href="{{url_for('contact')}}">CONTACT</a>
+        </li>
+        <li class="nav-item dropdown ">
+          <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="rounded-circle me-lg-2" src="{{ url_for('static', filename='images/user-2.png') }}" alt="" style="width: 30px; height: 30px;">
+            {% if 'user_name' in session %}<span class="d-none d-lg-inline-flex">{{session['user_name']}}</span>{% else %}<span class="d-none d-lg-inline-flex">...</span>{% endif %}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% if 'user_id' in session %}
+            <!--<div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">-->
+            <li> <a class="dropdown-item"  href="#">Mon Profile</a></li>
+            <li><a  class="dropdown-item" href="#">Paramètres</a></li>
+            <li><a class="dropdown-item" href="{{url_for('deconnexion')}}" >Se déconnecter</a></li>
+            <!--</div>-->
+            {% else %}
+            <li><a class="dropdown-item" href="{{url_for('inscription')}}">S'inscrire </a></li>
+            <li><a class="dropdown-item" href="{{url_for('connexion')}}" >Se connecter</a></li>
+            {% endif %}
+          </ul>
+        </li>              
+      </ul>
+    </div>
+  </div>
+</nav>

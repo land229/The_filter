@@ -1,0 +1,143 @@
+/********** Template CSS **********/
+:root {
+    --primary: #EB1616;
+    --secondary: #191C24;
+    --light: #6C7293;
+    --dark: #000000;
+}
+
+.card {
+      margin-bottom: 10px;
+    }
+  nav{
+    margin-bottom: 30px;
+  }
+  h2{
+    text-align: center;
+  }
+  h3{
+    text-align: center;
+  }
+  h5{
+    text-align: center;
+  }
+  /* Effet de transition et changement de couleur lorsqu'une carte est survolée */
+/*.result-card:hover {
+  transform: scale(1.05); 
+  transition: all 0.3s ease-in-out;
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}*/
+/* Ajoutez une transition pour l'animation en douceur */
+.result-card {
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Effet lors du survol */
+.result-card:hover {
+    transform: scale(1.06); /* Agrandissement subtil */
+    background-color: #a8dadc; /* Changement vers une couleur pastel douce (bleu clair) */
+    color: #1d3557; /* Texte en bleu foncé doux */
+}
+
+
+/* Changement de la couleur du bouton lors du survol de la carte */
+.result-card:hover .btn-primary {
+    background-color: #457b9d; /* Changement du bouton en bleu pastel */
+    border-color: #457b9d;
+}
+
+/* Modification de la couleur du texte dans le bouton pour plus de contraste */
+.result-card:hover .btn-primary {
+    color: #f1faee; /* Couleur du texte du bouton en blanc cassé */
+}
+
+.card p{
+  text-align: center;
+}
+.icon {
+  width: 24px; 
+  height: 24px;
+  margin-right: 8px; 
+}
+
+#spinner {
+     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+p{
+  text-align:justify;
+}
+.navbar.sticky-top{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+body{
+  padding-top: 56px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+   
+}
+main{
+  flex: 1;
+}
+footer{
+  width: 100%;
+  background-color: #f8f9fa;
+  text-align: center;
+  margin-top: 56px;
+}
+section{
+  margin-bottom: 30px;
+}
+.navbar-nav .nav-item .active{
+  border-bottom: 2px dashed #000000;
+}
+html{
+   font: 400 14px/1.8 "Open Sans", sans-serif;
+  color: #666;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media(max-width:992px){
+  footer{
+    position: static;
+  }
+}
+
+textarea {
+  height: auto !important; }
+
+  a {
+  text-decoration: none;
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+  color: #2f2f2f;
+  text-decoration: underline; }
+  a:hover {
+    color: #2f2f2f;
+    text-decoration: none; }
+  a.more {
+    font-weight: 600; }
+
+.navbar-nav .nav-item .active{
+    border-bottom: 2px dashed #007bff;
+}
