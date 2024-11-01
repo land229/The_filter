@@ -1,0 +1,46 @@
+name: Flask Application CI
+
+# Exécute le workflow sur chaque push et pull request sur la branche main
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Étape 1 : Cloner le dépôt
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # Étape 2 : Configurer Python
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10.11'  # Choisissez la version de Python de votre application
+
+    # Étape 3 : Installer les dépendances
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # Étape 4 : Lancer les tests
+    - name: Run tests
+      run: |
+        pytest  # Exécuter les tests avec pytest
+      env:
+        FLASK_ENV: testing
+
+  # Job de déploiement facultatif
+  #deploy:
+  #  needs: build
+  #  runs-on: ubuntu-latest
+  #  if: github.ref == 'refs/heads/main'
+  #  steps:
+  #    - name: Deploy to Production
+  #      run: echo "Déploiement de l'application sur le serveur de production..."
+        # Ajoutez ici la commande de déploiement en fonction de votre hébergeur
