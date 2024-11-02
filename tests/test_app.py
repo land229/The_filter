@@ -12,7 +12,7 @@ def test_homepage(client):
     # Teste si la page d'accueil se charge correctement
     response = client.get('/')
     assert response.status_code == 200
-    assert b"Welcome" in response.data  # Vérifie que le texte "Welcome" est dans la page
+    assert b"Bienvenue" in response.data  # Vérifie que le texte "Bienvenue" est dans la page
 
 def test_404_page(client):
     # Teste une page qui n'existe pas
