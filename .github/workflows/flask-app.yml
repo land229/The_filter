@@ -31,10 +31,11 @@ jobs:
 
     # Étape 4 : Lancer les tests
     - name: Run tests
-      run: |
-        pytest -v tests/  # Exécuter les tests avec pytest
       env:
         FLASK_ENV: testing
+        PYTHONPATH: ${{ github.workspace }}  # Ajout du répertoire courant au PYTHONPATH
+      run: |
+        pytest -v tests/  # Exécuter les tests avec pytest
 
   # Job de déploiement facultatif
   #deploy:
