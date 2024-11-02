@@ -32,7 +32,7 @@ jobs:
     # Étape 4 : Lancer les tests
     - name: Run tests
       run: |
-        pytest  # Exécuter les tests avec pytest
+        pytest -v tests/  # Exécuter les tests avec pytest
       env:
         FLASK_ENV: testing
 
